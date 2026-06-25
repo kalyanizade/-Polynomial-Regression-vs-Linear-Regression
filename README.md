@@ -65,5 +65,5 @@ Linear regression assumes salary increases at a **constant rate** per level — 
 
 ## 👩‍💻 Author
 
-Kalyani Zade
+Kalyani Zade |
 Machine Learning enthusiast | Python Developer
