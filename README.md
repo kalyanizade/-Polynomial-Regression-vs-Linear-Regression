@@ -11,18 +11,6 @@ A simple linear model fails to capture the non-linear salary growth pattern, so 
 
 ---
 
-## 📁 Dataset
-
-**File:** `emp_sal.csv`
-
-| Column | Description |
-|--------|-------------|
-| Position | Job title (e.g., Analyst, Manager, CEO) |
-| Level | Numeric level (1 to 10) |
-| Salary | Annual salary in USD |
-
----
-
 ## 🧠 Models Used
 
 ### 1. Linear Regression (degree = 1)
@@ -30,6 +18,26 @@ Fits a straight line through the data. Struggles when the relationship is curved
 
 ### 2. Polynomial Regression (degree = 2)
 Expands features as `[1, x, x²]` and fits a curve — capturing non-linear patterns far better.
+
+---
+
+## 🔁 How It Works
+
+Input: Position Level (X)
+         │
+         ├──► Linear Regression     → Straight line fit  (degree 1)
+         │
+         └──► PolynomialFeatures()  → Transforms X to [1, x, x²]
+                      │
+                      └──► Linear Regression on X_poly → Curved fit
+
+---
+
+## 📉 Visualizations
+
+ Linear Regression = Straight line — clearly underfits the salary curve.
+
+ Polynomial Regression = Curved fit — follows the non-linear salary growth pattern closely.
 
 ---
 
@@ -47,25 +55,6 @@ Expands features as `[1, x, x²]` and fits a curve — capturing non-linear patt
 ```bash
 pip install numpy pandas matplotlib scikit-learn
 ```
-
----
-
-## 💻 Code Overview
-
-```python
-# Linear Regression
-lin_reg = LinearRegression()
-lin_reg.fit(X, y)
-lin_reg.predict([[6.5]])   # ~$330,379 ❌
-
-# Polynomial Regression
-poly_reg = PolynomialFeatures(degree=2)
-X_poly = poly_reg.fit_transform(X)
-lin_reg_2 = LinearRegression()
-lin_reg_2.fit(X_poly, y)
-lin_reg_2.predict(poly_reg.fit_transform([[6.5]]))  # ~$189,498 ✅
-```
-
 ---
 
 ## 📌 Why Not Linear Regression?
@@ -74,4 +63,7 @@ Linear regression assumes salary increases at a **constant rate** per level — 
 
 ---
 
-## 🗂️ Project Structure
+## 👩‍💻 Author
+
+Kalyani Zade
+Machine Learning enthusiast | Python Developer
